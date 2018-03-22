@@ -17,6 +17,7 @@ export default class SignaturePad extends React.Component {
     this.backgroundColor = this.props.backgroundColor || "rgba(0,0,0,0)";
     this.onEnd = this.props.onEnd;
     this.onBegin = this.props.onBegin;
+    this.onChange = this.props.onChange;
   }
 
   componentDidMount() {
@@ -194,6 +195,12 @@ export default class SignaturePad extends React.Component {
     }
     if (typeof this.onEnd === 'function') {
       this.onEnd(event);
+    }
+
+    if (typeof this.onChange === 'function') {
+      this.onChange({
+        base64DataUrl: this.toDataURL();
+      });
     }
   };
 

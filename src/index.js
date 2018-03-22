@@ -199,7 +199,7 @@ export default class SignaturePad extends React.Component {
 
     if (typeof this.onChange === 'function') {
       this.onChange({
-        base64DataUrl: this.toDataURL();
+        base64DataUrl: this.toDataURL()
       });
     }
   };
@@ -324,18 +324,15 @@ export default class SignaturePad extends React.Component {
   };
 
   render() {
-    return (
-      <div id="signature-pad" className="m-signature-pad">
-        <div className="m-signature-pad--body">
-          <canvas ref="cv"></canvas>
-        </div>
-        { this.props.clearButton &&
-          <div className="m-signature-pad--footer">
-            <button className="btn btn-default button clear" onClick={this.clear.bind(this)}>Clear</button>
-          </div>
-        }
-      </div>
-    );
+    return <canvas ref="cv" style={canvasStyle} />
   }
 
+}
+
+const canvasStyle = {
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  width: '100%',
+  height: '100%'
 }

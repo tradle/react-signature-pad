@@ -2,7 +2,7 @@
   "name": "react-signature-pad",
   "version": "0.0.6",
   "description": "A signature pad implementation for react.",
-  "main": "lib/app.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "webpack && npm pack",
     "start": "webpack-dev-server --hot --inline",
@@ -32,7 +32,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0"
   }
 }

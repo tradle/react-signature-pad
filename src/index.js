@@ -47,6 +47,14 @@ export default class SignaturePad extends React.Component {
     this._reset();
   }
 
+  exportImage(imageType, quality) {
+    const url = this.toDataURL(imageType, quality)
+    return {
+      url,
+      ...this.getDimensions()
+    }
+  }
+
   toDataURL(imageType, quality) {
     var canvas = this._canvas;
     return canvas.toDataURL.apply(canvas, arguments);
@@ -65,6 +73,11 @@ export default class SignaturePad extends React.Component {
       self._ctx.drawImage(image, 0, 0, width, height);
     };
     this._isEmpty = false;
+  }
+
+  getDimensions() {
+    var { width, height } = this._canvas
+    return { width, height }
   }
 
   isEmpty() {
@@ -198,9 +211,7 @@ export default class SignaturePad extends React.Component {
     }
 
     if (typeof this.onChange === 'function') {
-      this.onChange({
-        base64DataUrl: this.toDataURL()
-      });
+      this.onChange(this.exportImage());
     }
   };
 
